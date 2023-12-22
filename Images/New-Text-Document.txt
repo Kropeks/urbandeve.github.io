@@ -1,0 +1,254 @@
+
+import java.util.*;
+
+public class EnrollmentSystem {
+    private static Scanner scanner = new Scanner(System.in);
+    private static List<Student> students = new ArrayList<>();
+    private static Queue<Student> waitingList = new LinkedList<>();
+    private static PriorityQueue<Student> enrolledStudents = new PriorityQueue<>(Comparator.comparing(Student::getLastName).thenComparing(Student::getFirstName));
+
+    private static int studentIDCounter = 1000; // Student ID counter starting from 1000
+
+    public static void main(String[] args) {
+        int choice;
+
+        do {
+            displayMenu();
+            choice = scanner.nextInt();
+            scanner.nextLine(); // Clear the buffer
+
+            switch (choice) {
+                case 1:
+                    enrollStudent();
+                    break;
+                case 2:
+                    processEnrollment();
+                    break;
+                case 3:
+                    displayEnrolledStudents();
+                    break;
+                case 4:
+                    displayWaitingList();
+                    break;
+                case 5:
+                    deleteStudent();
+                    break;
+                case 6:
+                    System.out.println("Exiting...");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please enter a valid option.");
+            }
+        } while (choice != 6);
+
+        scanner.close();
+    }
+
+    public static void displayMenu() {
+        System.out.println("\nEnrollment System Menu:");
+        System.out.println("1. Enroll Student");
+        System.out.println("2. Process Enrollment");
+        System.out.println("3. Display Enrolled Students");
+        System.out.println("4. Display Waiting List");
+        System.out.println("5. Delete Student");
+        System.out.println("6. Exit");
+        System.out.print("Enter your choice: ");
+    }
+
+    public static void enrollStudent() {
+        System.out.print("\nEnter Last Name: ");
+        String lastName = scanner.nextLine();
+        System.out.print("Enter First Name: ");
+        String firstName = scanner.nextLine();
+        System.out.print("Enter Middle Initial (optional): ");
+        String middleInitial = scanner.nextLine();
+
+        if (!lastName.isEmpty() && !firstName.isEmpty()) {
+            Student newStudent = new Student(lastName, firstName, middleInitial);
+            waitingList.add(newStudent);
+            System.out.println("Student " + newStudent.getFullName() + " has been added to the waiting list.");
+        } else {
+            System.out.println("Incomplete information. Cannot add the student to the waiting list.");
+        }
+    }
+
+    public static void processEnrollment() {
+        if (!waitingList.isEmpty()) {
+            Student student = waitingList.poll();
+            student.setStudentID(generateStudentID());
+            selectCourse(student);
+            enrolledStudents.offer(student);
+            System.out.println(student.getFullName() + " with Student ID " + student.getStudentID() + " has been enrolled.");
+        } else {
+            System.out.println("Waiting list is empty.");
+        }
+    }
+
+    public static void selectCourse(Student student) {
+        System.out.println("\nSelect a Program for " + student.getFullName() + ":");
+        System.out.println("1. CC001 - Computer Science");
+        System.out.println("2. EN002 - English Literature");
+        System.out.println("3. BU003 - Business Administration");
+        System.out.print("Enter your choice: ");
+        int courseChoice = scanner.nextInt();
+        scanner.nextLine(); // Clear the buffer
+
+        switch (courseChoice) {
+            case 1:
+                student.setCourseCode("CC001");
+                student.setCourseName("Computer Science");
+                break;
+            case 2:
+                student.setCourseCode("EN002");
+                student.setCourseName("English Literature");
+                break;
+            case 3:
+                student.setCourseCode("BU003");
+                student.setCourseName("Business Administration");
+                break;
+            default:
+                System.out.println("Invalid choice. Student not assigned a program.");
+        }
+    }
+
+    public static void displayEnrolledStudents() {
+        if (!enrolledStudents.isEmpty()) {
+            System.out.println("\nEnrolled Students:");
+            while (!enrolledStudents.isEmpty()) {
+                Student student = enrolledStudents.poll();
+                System.out.println(student.getFullName() + " - Student ID: " + student.getStudentID() + " - Course: " + student.getCourseCode() + " - " + student.getCourseName());
+            }
+        } else {
+            System.out.println("\nNo students have been enrolled yet.");
+        }
+    }
+
+    public static void displayWaitingList() {
+        if (!waitingList.isEmpty()) {
+            System.out.println("\nWaiting List:");
+            for (Student student : waitingList) {
+                System.out.println(student.getFullName());
+            }
+        } else {
+            System.out.println("\nWaiting list is empty.");
+        }
+    }
+
+    public static void deleteStudent() {
+        System.out.println("\nChoose where to delete student:");
+        System.out.println("1. Enrolled Students");
+        System.out.println("2. Waiting List");
+        int deleteChoice = scanner.nextInt();
+        scanner.nextLine(); // Clear the buffer
+
+        switch (deleteChoice) {
+            case 1:
+                if (!enrolledStudents.isEmpty()) {
+                    System.out.print("\nEnter the name of the student to delete from enrolled students: ");
+                    String fullName = scanner.nextLine();
+                    boolean found = false;
+                    for (Student student : enrolledStudents) {
+                        if (student.getFullName().equalsIgnoreCase(fullName)) {
+                            enrolledStudents.remove(student);
+                            System.out.println(fullName + " has been deleted from enrolled students.");
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        System.out.println(fullName + " was not found in enrolled students.");
+                    }
+                } else {
+                    System.out.println("Enrolled students list is empty.");
+                }
+                break;
+            case 2:
+                if (!waitingList.isEmpty()) {
+                    System.out.print("\nEnter the name of the student to delete from waiting list: ");
+                    String fullName = scanner.nextLine();
+                    boolean found = false;
+                    for (Student student : waitingList) {
+                        if (student.getFullName().equalsIgnoreCase(fullName)) {
+                            waitingList.remove(student);
+                            System.out.println(fullName + " has been deleted from waiting list.");
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        System.out.println(fullName + " was not found in waiting list.");
+                    }
+                } else {
+                    System.out.println("Waiting list is empty.");
+                }
+                break;
+            default:
+                System.out.println("Invalid choice. Please enter 1 or 2.");
+        }
+    }
+
+    public static int generateStudentID() {
+        return studentIDCounter++;
+    }
+}
+
+class Student {
+    private String lastName;
+    private String firstName;
+    private String middleInitial;
+    private int studentID;
+    private String courseCode;
+    private String courseName;
+
+    public Student(String lastName, String firstName, String middleInitial) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.middleInitial = middleInitial;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getMiddleInitial() {
+        return middleInitial;
+    }
+
+    public String getFullName() {
+        if (!middleInitial.isEmpty()) {
+            return firstName + " " + middleInitial + ". " + lastName;
+        } else {
+            return firstName + " " + lastName;
+        }
+    }
+
+    public int getStudentID() {
+                return studentID;
+    }
+
+    public void setStudentID(int studentID) {
+        this.studentID = studentID;
+    }
+
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+}
+
+      

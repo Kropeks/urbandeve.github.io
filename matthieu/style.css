@@ -1,0 +1,13 @@
+body {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(night.jpg);
+  }
+  
+  #mycanvas {
+    background-image: url(night.jpg);
+    margin-top: 10rem;
+    display: flex;
+  }

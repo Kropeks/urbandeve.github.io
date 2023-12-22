@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Inder&family=Joti+One&display=swap');
+
+:root {
+    --brown-color:#B48F58;
+    --darkblue-color:#023047;
+    --lighbrown-color:#E8C58F;
+    --lightgrey-color:#CEDCD7;
+    --white-color:#FFFFFF;
+    --black-color:#000000;
+}
+
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+
+}
+
+header {
+    background: linear-gradient(180deg, #E8C58F 0%, #E8C58F 0.01%, #715B3C 100%);
+    height: 100vh;
+    width: 100%;
+}
+
+.application-section {
+    background: linear-gradient(180deg, #E8C58F 0%, #E8C58F 0.01%, #715B3C 100%);
+    padding: 70px 0 ;
+    padding-bottom: 120px;
+}
+
+.application-section h2{
+    text-align:  center;
+    color: white;
+    
+}
+
+.application-section .application-cards {
+    display: flex;
+    gap: 105px;
+    margin:35px ;
+    
+    
+}
+
+.application-section .application-cards img{
+    width: 100%;
+    border-radius: 24px;
+    background: #E8C58F;
+}
+
+.application-section .application-cards .app-card {
+    border-radius: 24px;
+    background: #E8C58F;
+    padding: 0px 32px;
+    margin: 40px 0;
+}
+
+.application-section .app-card {
+    background: white;
+    border-radius: 24px;
+    padding: 0 32px;
+    margin: 40px 0;
+    position: relative;
+    
+}
+
+.application-section .app-card::after {
+    content: "";
+    height: 8px;
+    left: 32px;
+    right: 32px;
+    bottom: 0;
+    background: var(--brown-color);
+    border-radius: 24px;
+    position: absolute;
+
+}
+
+.application-section .app-card h3 {
+    color: var(--brown-color);
+    font-family: "Raleway" sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 150%;
+}
+.application-section .app-card a {
+    color: var(--brown-color);
+    font-family: "Raleway" sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 150%;
+    list-style: none;
+    text-decoration: none;
+}
+
+.application-section .app-card .info {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.application-section .app-card .creator {
+    color: var(--brown-color);
+    font-family: "Raleway" sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 150%;
+    white-space: nowrap;
+    position: relative;
+    padding-left: 20px;
+}
+
+.application-section .wrapper {
+    position: relative;
+}
+
+.application-section .wrapper .btn {
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+}

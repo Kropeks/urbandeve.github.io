@@ -1,0 +1,492 @@
+@import url('https://fonts.googleapis.com/css2?family=Inder&family=Joti+One&display=swap');
+
+:root {
+    --brown-color:#B48F58;
+    --darkblue-color:#023047;
+    --lighbrown-color:#E8C58F;
+    --lightgrey-color:#CEDCD7;
+    --white-color:#FFFFFF;
+    --black-color:#000000;
+}
+
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+
+}
+
+.wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+/* buttons */
+
+.btn {
+    padding: 16px 32px;
+    border-radius: 24px;
+    color: white;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration:none ;
+    position: relative;
+}
+
+.btn.dark {
+    background: var(--brown-color);
+}
+
+.btn.light {
+    background: var(--darkblue-color);
+}
+
+.btn.see-icon::before {
+    content: url('../Images/seenow.svg');
+    position: absolute;
+    top: 50%;
+    left: 32px;
+    transform: translateY(-50%);
+}
+
+.btn.see-icon {
+    padding-left: 60px;
+}
+
+/* Header */
+
+header {
+    background: linear-gradient(180deg, #E8C58F 0%, #E8C58F 0.01%, #715B3C 100%);
+    height: 100vh;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 1366px;
+    top: 36px;
+    z-index: 100;
+}
+nav .logo img{
+    width: 212px;
+    height: 53px;
+    flex-shrink: 0;
+    margin-top: 0;
+
+}
+nav .logo {
+    color: #FFF;
+    font-family: Joti One;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    margin: 0;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 59px;
+    list-style: none;
+    margin: 0;
+}
+
+nav ul li a {
+    color: #FFF;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* HERO SECTION */
+
+.hero-section {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 60px;
+}
+
+.hero-section .left h1 {
+    color: #FFF;
+    font-family: "Raleway", sans-serif;
+    font-size: 45px;
+    font-weight: 900;
+    line-height: 125%;
+    margin-bottom: 0;
+}
+
+.hero-section .left p {
+    color: #FFF;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 200%;
+    margin-bottom: 30px;
+}
+
+.hero-section .left {
+    width: 434px;
+}
+
+.hero-section .right {
+    align-self: flex-end;
+}
+
+.hero-section .right img {
+    height: 640px;
+    vertical-align: middle;
+}
+
+/* Associates Section */
+
+section {
+    margin-top: 100px;
+}
+
+h2 {
+    color: #B48F58;
+    font-family: "Raleway", sans-serif;
+    font-size: 60px;
+    font-weight: 900;
+    line-height: 120%;
+    margin: 0;
+}
+
+h2.light {
+    color: white;
+}
+
+section p {
+    color: #000;
+    font-family: "Poppins", sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 125%;
+    margin: 12px 0;
+}
+
+.associates-section {
+    gap: 100px;
+    align-items: center;
+    width: 1366px;
+}
+
+.associates-section .center {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.associates-section .associates-card {
+    display: flex;
+    width: 100%;
+    height: 224px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+    border-radius: 50px;
+    background: #CEDCD7;
+    box-shadow: 0px 9px 36px 0px rgba(0, 0, 0, 0.20);
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.associates-section .mobile-btn {
+    display: none;
+}
+
+.associates-section .associates-card .content1,
+.associates-section .associates-card .content2 {
+    color: #FFF;
+    font-family: "Raleway", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 150%;
+    border-radius: 50px;
+    padding: 24px 32px;
+    align-self: stretch;
+}
+
+.associates-section .associates-card .content1 {
+    background-color: #B48F58; /* Change this to your desired color */
+    display: flex;
+    flex-direction: column; /* Align vertically */
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.associates-section .associates-card .content2 {
+    background-color: #355C7D; /* Change this to your desired color */
+    display: flex;
+    flex-direction: column; /* Align vertically */
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.associates-section .associates-card .info {
+    padding: 24px 32px;
+}
+
+.associates-section .associates-card .info h4 {
+    color: #355C7D; /* Change this to your desired color */
+    font-family: "Raleway", sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 120%;
+    margin: 0;
+}
+
+.associates-section .associates-card .info p.company {
+    color: #355C7D; /* Change this to your desired color */
+    font-family: "Raleway", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.associates-section .associates-card img {
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    right: 32px;
+    bottom: 20px;
+}
+
+
+/*application */
+
+
+
+.application-section {
+    background: linear-gradient(180deg, #E8C58F 0%, #E8C58F 0.01%, #715B3C 100%);
+    padding: 70px 0 ;
+    padding-bottom: 120px;
+}
+
+.application-section h2{
+    text-align:  center;
+    
+}
+
+.application-section .application-cards {
+    display: flex;
+    gap: 105px;
+    margin:35px ;
+    
+    
+}
+
+.application-section .application-cards img{
+    width: 100%;
+    border-radius: 24px;
+    background: #E8C58F;
+}
+
+.application-section .application-cards .app-card {
+    border-radius: 24px;
+    background: #E8C58F;
+    padding: 0px 32px;
+    margin: 40px 0;
+}
+
+.application-section .app-card {
+    background: white;
+    border-radius: 24px;
+    padding: 0 32px;
+    margin: 40px 0;
+    position: relative;
+}
+
+.application-section .app-card::after {
+    content: "";
+    height: 8px;
+    left: 32px;
+    right: 32px;
+    bottom: 0;
+    background: var(--brown-color);
+    border-radius: 24px;
+    position: absolute;
+
+}
+
+.application-section .app-card h3 {
+    color: var(--brown-color);
+    font-family: "Raleway" sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 150%;
+}
+.application-section .app-card a {
+    color: var(--brown-color);
+    font-family: "Raleway" sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 150%;
+    text-decoration: none;
+}
+
+
+.application-section .app-card .info {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.application-section .app-card .creator {
+    color: var(--brown-color);
+    font-family: "Raleway" sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 150%;
+    white-space: nowrap;
+    position: relative;
+    padding-left: 20px;
+}
+
+.application-section .wrapper {
+    position: relative;
+}
+
+.application-section .wrapper .btn {
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+}
+
+/* App Section*/
+
+.app-section {
+    text-align: center;
+}
+
+.app-section .app-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 34px;
+    margin-top: 24px;
+}
+
+.app-section .app-btn {
+    min-width: 310px;
+    height: 103px;
+    border-radius: 20px;
+    background: #000;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 21px;
+}
+
+.app-section .app-btn span{
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 400; 
+}
+
+/*footer*/
+
+footer {
+    background: var(--darkblue-color);
+    color: white;
+    margin-top: 100px;
+    padding: 70px 0;
+}
+
+footer a{
+    text-decoration: none;
+    color: white;
+}
+
+footer h3{
+    color: var(--brown-color);
+}
+
+footer ul{
+    list-style: none;
+    padding-left: 20px;
+}
+
+footer ul li {
+    margin: 16px 0;
+}
+
+footer .links-container {
+    display: grid;
+    grid-template-columns:2fr 2fr 3fr ;
+    margin-left: 30px;
+}
+
+footer .social {
+    margin-left: 20px;
+}
+
+footer .social a {
+    margin-right: 27px;
+}
+
+footer form {
+    margin-left: 20px;
+    margin-top: 16px;
+    position: relative;
+
+}
+
+footer form input {
+    color: #000;
+    font-family: "Poppins" sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 8px;
+    padding: 8px 32px;
+    border: none;
+    width: 80%;
+}
+
+footer form .submit-btn {
+    position: absolute;
+    right: 5px;
+    top: 15%;
+    transform:  translateX(-90%);
+    background: var(--darkblue-color);
+    border-radius: 8px;
+    padding: 4px 28px ;
+    border: 0;
+    color: #FFF;
+    font-family: "Poppins" sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    cursor: pointer;
+}
+
+footer .copyright {
+    margin-top: 36px;
+    margin-left: 30px;
+}
